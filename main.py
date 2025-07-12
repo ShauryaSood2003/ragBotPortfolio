@@ -244,6 +244,33 @@ embeddings = GoogleGenerativeAIEmbeddings(
 vector_store = None
 conversation_chains = {}
 
+def load_training_data():
+    """Load and chunk the training data file"""
+    try:
+        with open("training_data.txt", "r", encoding="utf-8") as f:
+            content = f.read()
+        
+        if not content.strip():
+            logger.warning("Training data file is empty")
+            return ["No training data available"]
+        
+        # Split into chunks
+        text_splitter = RecursiveCharacterTextSplitter(
+            chunk_size=1000,
+            chunk_overlap=200,
+            separators=["\n\n", "\n", ". ", " ", ""]
+        )
+        chunks = text_splitter.split_text(content)
+        logger.info(f"Loaded {len(chunks)} chunks from training data")
+        return chunks
+        
+    except FileNotFoundError:
+        logger.warning("training_data.txt not found, using fallback content")
+        return ["Shaurya Sood is a Senior Full Stack Developer with expertise in React, Node.js, and AI-powered applications."]
+    except Exception as e:
+        logger.error(f"Error loading training data: {e}")
+        return ["Training data could not be loaded"]
+
 def initialize_milvus():
     global vector_store
     try:
@@ -258,11 +285,12 @@ def initialize_milvus():
         logger.error(f"Failed to connect to Milvus: {milvus_error}")
         try:
             from langchain_community.vectorstores import FAISS
-            vector_store = FAISS.from_texts(
-                ["Initial empty document"], 
-                embeddings
-            )
-            logger.info("Using FAISS as fallback vector store")
+            
+            # Load training data and create FAISS with it
+            training_chunks = load_training_data()
+            vector_store = FAISS.from_texts(training_chunks, embeddings)
+            
+            logger.info(f"Using FAISS with {len(training_chunks)} pre-loaded chunks")
             return True
         except Exception as e:
             logger.error(f"FAISS fallback also failed: {e}")
