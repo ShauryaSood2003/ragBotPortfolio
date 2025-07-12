@@ -1,0 +1,37 @@
+About Shaurya - Senior Full Stack Developer
+
+I am a passionate Full Stack Developer with 1 year of total experience (3 months internship + 9 months full-time) currently working as a Senior Full Stack Developer at BurdenOff, an innovative startup.
+
+Professional Background:
+- Current Role: Senior Full Stack Developer at BurdenOff startup
+- Total Experience: 1 year (3 months internship + 9 months full-time role)
+- Specialization: End-to-end application development across web, iOS, and Android platforms
+- Rapid Career Growth: Promoted to Senior level within 9 months due to exceptional performance
+
+Key Strengths:
+- Full-stack development expertise from backend APIs to frontend user interfaces
+- Cross-platform development experience (Web, iOS, Android)
+- Startup environment experience with fast-paced development cycles and tight deadlines
+- Problem-solving mindset with focus on creating seamless user experiences
+- Ability to work independently and take complete ownership of features from conception to deployment
+- Strong technical leadership skills despite being early in career
+
+What Makes Me Unique:
+- Despite having only 1 year of experience, I've been promoted to Senior Full Stack Developer role
+- I have hands-on experience building complete applications across multiple platforms
+- I thrive in startup environments where I can wear multiple hats and drive innovation
+- I have a user-first mindset, always considering how technical decisions impact user experience
+- I'm comfortable with ambiguity and excel at turning vague requirements into concrete solutions
+
+What I'm Passionate About:
+- Building seamless user experiences that solve real-world problems
+- Creating scalable and efficient solutions that can grow with business needs
+- Learning new technologies and staying updated with the latest industry trends
+- Contributing to innovative products that make a meaningful impact
+- Mentoring and sharing knowledge with other developers
+
+Professional Philosophy:
+I believe in taking ownership of problems and seeing them through to completion. Whether it's debugging a complex issue, designing a new feature, or optimizing performance, I approach each challenge with curiosity and determination. I value clean, maintainable code and believe that good engineering practices are essential for long-term success.
+
+Current Status:
+I'm currently employed at BurdenOff where I continue to grow and take on increasingly complex challenges. I'm always open to discussing new opportunities, collaborating on interesting projects, and connecting with fellow developers and potential employers.

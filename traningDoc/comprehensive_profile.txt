@@ -1,0 +1,213 @@
+SHAURYA SOOD - SENIOR FULL STACK DEVELOPER
+Complete Professional Profile & Background
+
+PERSONAL INFORMATION & CONTACT
+Name: Shaurya Sood
+Current Role: Senior Full Stack Developer at BurdenOff
+Email: shauryasood293@gmail.com
+LinkedIn: http://www.linkedin.com/in/shaurya-sood-87b968208
+GitHub: https://github.com/ShauryaSood2003
+Twitter: https://twitter.com/ShauyaSood
+Location: Pitampura, New Delhi, India
+
+PROFESSIONAL VISION & PASSION
+I am a dedicated software engineer with a vision for creating innovative solutions and a passion for leveraging technology to solve complex problems efficiently. With a strong background in software development and a commitment to continuous learning, I strive to push the boundaries of what's possible. I have a relentless growth mindset and have progressed rapidly from intern to core team member by continuously learning and taking ownership of critical deliverables.
+
+CAREER PROGRESSION & EXPERIENCE
+
+Senior Full Stack Developer at BurdenOff (May 2024 - Present)
+- Leading development of cross-platform applications for high-profile clients
+- Working on AI-powered SaaS applications for the company
+- Taking complete ownership of projects from architecture to deployment
+- Managing systems that handle 25K+ transactions with clients like Google, Amazon, and Flipkart
+- Mentoring new team members and interns
+
+Junior Full Stack Developer at BurdenOff (November 2024 - April 2025)
+- Continued work on cross-platform applications
+- Expanded responsibilities in AI-powered SaaS development
+- Developed expertise in production debugging and system optimization
+
+Full Stack Developer Intern at BurdenOff (July 2024 - October 2024)
+- Started journey as an intern and quickly proved capabilities
+- Worked on cross-platform applications and AI-powered solutions
+- Rapid learning and adaptation to professional development environment
+
+EDUCATION
+Bachelor of Technology (Computer Science Engineering)
+Guru Gobind Singh Indraprastha University (ADGITM)
+2021 - 2025
+CGPA: 9.23 (Excellent Academic Performance)
+
+12th Class - DL DAV MODEL SCHOOL
+2009 - 2021
+Percentage: 93.2%
+
+TECHNICAL EXPERTISE
+
+Frontend Technologies:
+- React JS, Next JS - Expert level for building scalable web applications
+- Ionic & Capacitor - Cross-platform mobile development
+- HTML, JavaScript, TypeScript, EJS - Core web technologies
+- Redux, Recoil - State management solutions
+- CSS, ThreeJS, Tailwind CSS, Material-UI - Styling and 3D graphics
+
+Backend Technologies:
+- Node.js, Hono - Server-side development
+- Postman API, GraphQL - API development and testing
+- MongoDB, Prisma, PostgreSQL - Database management
+- Redis, Pub/Sub, WebSocket - Real-time communication and caching
+
+DevOps & Cloud:
+- Docker - Containerization
+- Cloudflare, AWS - Cloud deployment and management
+- Production debugging and system optimization
+
+MAJOR PROJECTS & ACHIEVEMENTS
+
+91Springboard (Client Work) - May 2024 to Present
+[Link: https://app.91springboard.com/]
+- Built end-to-end application (iOS, Android, and web portal) for coworking organization
+- Handling over 1,000 bookings per day with more than 60,000 users and 29,000 organizations
+- Processed more than 30,000 bookings through the new application
+- Developed critical features including booking, cancellation, rescheduling, and multi-credit logic
+- Worked with high-profile clients including Google, Amazon, and Flipkart
+- Took complete ownership from architecture design to production deployment
+
+CodeCrack (Personal Project) - Ongoing
+[GitHub: https://github.com/ShauryaSood2003/CodeCrack]
+- Building a microserviced coding platform with a vision to gamify coding experience
+- Developing CodeWars feature for one-on-one competitive coding contests
+- Enables users to log in, run code, and receive real-time feedback
+- Provides seamless and efficient coding experience
+
+Fintech Application "PayWay" - April 2024 to May 2024
+- Payment application featuring user services like bank transfers, P2P transactions, and merchant transfers
+- WebSocket-enabled merchant dashboard for real-time transaction updates
+- Experience gained helped in handling credits and financial aspects of client projects
+
+Chat Messenger (WhatsApp Clone) - April 2023 to June 2023
+- Fully functional messenger incorporating React, Node.js, Socket.IO
+- Secure Google Authentication, Media Sharing, Persistent Chat History
+- Early project where I learned WebSocket concepts
+
+CORE STRENGTHS & UNIQUE VALUE PROPOSITION
+
+1. End-to-End Ownership
+- Take projects from zero to production launch
+- Handle architecture design, backend development, frontend implementation, and DevOps
+- Personal responsibility for entire product lifecycle
+
+2. High Throughput & AI-Powered Productivity
+- Leverage cutting-edge tools like Cursor, V0.dev, and AI code generation
+- 3-4x faster delivery speed through AI-assisted coding workflows
+- Reduce delivery time for complex features from days to hours
+
+3. Production Debugging & Problem Solving
+- Handle real-world issues in live environments
+- Query optimization (reducing 30 DB calls to 3)
+- Scaling bottlenecks resolution (parallel bookings, locking issues)
+- Server outage management during high traffic
+- "I will stay until it works" mindset
+
+4. Business & Product Understanding
+- Understand not just code, but why the code matters
+- Deep knowledge of billing systems and credits logic
+- Understanding how product success determines company stability
+- Direct client communication and requirement gathering
+
+5. Multi-Disciplinary Skillset
+- Backend development expertise
+- Frontend development skills
+- DevOps exposure and deployment management
+- Client communication abilities
+- Basic project management skills
+
+6. Relentless Learning & Growth
+- Progressed from intern to core team member in 12 months
+- Self-taught approach to rapid skill acquisition
+- Mentoring capabilities for new team members
+
+CERTIFICATIONS & LEARNING
+- Full Stack Developer Cohort 2 Certification from 100xDevs
+- Artificial Intelligence Analyst Certification from IBM
+
+LANGUAGES
+- English (Fluent)
+- Hindi (Native)
+
+CURRENT STATUS & AVAILABILITY
+- Currently employed as Senior Full Stack Developer at BurdenOff
+- Open to discussing senior and leadership opportunities
+- Interested in challenging full-stack development roles
+- Available for consulting on complex technical projects
+- Looking for roles that involve end-to-end product ownership
+
+WORKING STYLE & PHILOSOPHY
+- End-to-end ownership mentality
+- User-centric development approach
+- Continuous learning and adaptation
+- Strong problem-solving capabilities
+- Collaborative team player with leadership potential
+- Quality-focused with emphasis on scalable solutions
+
+ACHIEVEMENTS & IMPACT
+- Built systems handling 25K+ transactions for enterprise clients
+- Managed applications serving 60K+ users across multiple platforms
+- Reduced system complexity through optimization (30 DB calls to 3)
+- Accelerated development timelines through AI-assisted workflows
+- Successfully mentored new team members and interns
+
+FUTURE ASPIRATIONS
+- Lead larger, more complex technical projects
+- Build innovative products that solve real-world problems
+- Contribute to open-source development
+- Mentor the next generation of developers
+- Create scalable solutions for enterprise-level challenges
+
+---
+
+EXAMPLE QUESTIONS VISITORS CAN ASK ABOUT SHAURYA:
+
+Professional Background:
+- "Tell me about Shaurya's professional experience"
+- "How did Shaurya progress from intern to senior developer?"
+- "What companies has Shaurya worked for?"
+- "What is Shaurya's current role and responsibilities?"
+
+Technical Skills:
+- "What technologies does Shaurya specialize in?"
+- "Is Shaurya experienced with both frontend and backend development?"
+- "What programming languages does Shaurya know?"
+- "Does Shaurya have experience with mobile app development?"
+- "What cloud technologies has Shaurya worked with?"
+
+Projects & Achievements:
+- "What major projects has Shaurya built?"
+- "Tell me about the 91Springboard project"
+- "What is CodeCrack and what makes it unique?"
+- "How many users do Shaurya's applications serve?"
+- "What high-profile clients has Shaurya worked with?"
+
+Problem-Solving & Impact:
+- "How does Shaurya handle production issues?"
+- "What kind of optimization work has Shaurya done?"
+- "How does Shaurya approach system scalability?"
+- "What business impact have Shaurya's projects achieved?"
+
+Career & Growth:
+- "What makes Shaurya unique as a developer?"
+- "How fast did Shaurya progress in his career?"
+- "Is Shaurya available for new opportunities?"
+- "What type of roles is Shaurya looking for?"
+- "Does Shaurya have leadership experience?"
+
+Education & Learning:
+- "What is Shaurya's educational background?"
+- "What certifications does Shaurya have?"
+- "How does Shaurya stay updated with new technologies?"
+
+Personal & Working Style:
+- "What is Shaurya's working philosophy?"
+- "How does Shaurya approach end-to-end development?"
+- "Is Shaurya good at mentoring other developers?"
+- "What are Shaurya's future career goals?"

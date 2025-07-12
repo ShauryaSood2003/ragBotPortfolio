@@ -1,0 +1,91 @@
+Shaurya's Technical Expertise & Skills
+
+Programming Languages:
+- JavaScript/TypeScript: Expert level - Primary language for full-stack development across web and mobile platforms
+- Python: Proficient - Used for backend development, automation scripts, and data processing
+- Java: Intermediate - Android native development and understanding of enterprise applications
+- Swift: Intermediate - iOS native development for mobile applications
+- HTML5/CSS3: Expert - Modern web standards and responsive design principles
+
+Frontend Technologies:
+- React.js: Expert - Building complex, interactive web applications with state management
+- React Native: Advanced - Cross-platform mobile development for iOS and Android
+- Redux/Context API: Advanced - State management for complex applications
+- CSS Frameworks: Bootstrap, Tailwind CSS for rapid UI development
+- Responsive Design: Mobile-first approach ensuring optimal experience across devices
+- Progressive Web Apps (PWA): Creating app-like experiences on the web
+- Modern JavaScript (ES6+): Async/await, destructuring, modules, and modern syntax
+
+Backend Technologies:
+- Node.js: Expert - Server-side JavaScript development and API creation
+- Express.js: Expert - Web application framework for building RESTful APIs
+- RESTful API Design: Creating scalable, well-documented APIs
+- WebSocket Implementation: Real-time communication for live updates
+- Authentication & Authorization: JWT, OAuth, and security best practices
+- Middleware Development: Custom middleware for logging, authentication, and error handling
+
+Database Management:
+- MongoDB: Advanced - NoSQL database design and optimization
+- MySQL/PostgreSQL: Intermediate - Relational database design and queries
+- Database Design: Creating efficient schemas for complex data relationships
+- Query Optimization: Writing efficient queries and understanding database performance
+- Data Modeling: Designing data structures that support business requirements
+
+Mobile Development:
+- React Native: Advanced - Cross-platform mobile app development
+- iOS Development: Intermediate - Native iOS app development with Swift
+- Android Development: Intermediate - Native Android app development with Java
+- Mobile UI/UX: Understanding mobile design patterns and user experience principles
+- App Store Deployment: Experience with app store submission and approval processes
+
+Cloud & DevOps:
+- AWS (Amazon Web Services): Intermediate - EC2, S3, Lambda, RDS for scalable applications
+- Git Version Control: Expert - Collaborative development, branching strategies, and code reviews
+- CI/CD Pipelines: Setting up automated deployment and testing workflows
+- Docker: Basic - Containerization for consistent development and deployment environments
+- Linux/Unix: Command line proficiency and server management
+
+Development Tools & Practices:
+- VS Code: Primary development environment with extensive customization
+- Postman: API testing and documentation
+- Chrome DevTools: Debugging and performance optimization
+- npm/yarn: Package management and dependency handling
+- Webpack/Vite: Build tools and bundlers for optimized applications
+- ESLint/Prettier: Code quality and formatting standards
+
+Development Methodologies:
+- Agile Development: Experience working in sprints with regular standups and retrospectives
+- Test-Driven Development: Writing tests to ensure code quality and reliability
+- Code Review: Participating in and leading code review processes
+- Continuous Integration: Setting up automated testing and deployment pipelines
+- Documentation: Writing clear, maintainable documentation for code and APIs
+- Performance Optimization: Identifying and resolving performance bottlenecks
+
+Soft Skills & Working Style:
+- Problem Solving: Breaking down complex problems into manageable solutions
+- Independent Work: Ability to work autonomously and take ownership of projects
+- Communication: Clear communication with technical and non-technical stakeholders
+- Learning Agility: Quickly adapting to new technologies and frameworks
+- Time Management: Effectively managing multiple projects and deadlines
+- Mentoring: Helping other developers and sharing knowledge
+
+Industry Knowledge:
+- Startup Experience: Understanding of fast-paced development cycles and resource constraints
+- User Experience (UX): Considering user needs in technical decision-making
+- Business Logic: Translating business requirements into technical solutions
+- Scalability: Designing systems that can grow with business needs
+- Security: Implementing security best practices in web and mobile applications
+
+Current Learning & Growth:
+- Exploring advanced React patterns and performance optimization
+- Diving deeper into cloud architecture and microservices
+- Learning about AI/ML integration in web applications
+- Studying advanced database optimization techniques
+- Keeping up with the latest JavaScript frameworks and tools
+
+What Sets Me Apart:
+- Despite being early in my career, I have hands-on experience with the full technology stack
+- I have successfully delivered complex, multi-platform projects independently
+- I combine technical skills with strong business understanding
+- I'm comfortable working in ambiguous situations and defining technical requirements
+- I have a track record of rapid learning and adapting to new technologies

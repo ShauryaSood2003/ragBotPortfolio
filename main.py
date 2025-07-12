@@ -8,7 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGenerativeAI
-from langchain_community.vectorstores import Milvus
+# from langchain_community.vectorstores import Milvus  # Not needed for Render deployment
 from langchain.chains import ConversationalRetrievalChain
 from langchain.memory import ConversationBufferMemory
 from langchain.schema import Document
@@ -60,8 +60,6 @@ GEMINI_MODELS = [
 # Global variables
 GEMINI_API_KEY_PRIMARY = os.getenv("GEMINI_API_KEY_PRIMARY", "your_primary_key_here")
 GEMINI_API_KEY_FALLBACK = os.getenv("GEMINI_API_KEY_FALLBACK", "your_fallback_key_here")
-MILVUS_HOST = os.getenv("MILVUS_HOST", "localhost")
-MILVUS_PORT = int(os.getenv("MILVUS_PORT", "19530"))
 
 # API Key and model tracking
 current_api_key_index = 0  # 0 = primary, 1 = fallback
@@ -272,30 +270,21 @@ def load_training_data():
         logger.error(f"Error loading training data: {e}")
         return ["Training data could not be loaded"]
 
-def initialize_milvus():
+def initialize_vector_store():
     global vector_store
     try:
-        vector_store = Milvus(
-            embedding_function=embeddings,
-            connection_args={"host": MILVUS_HOST, "port": MILVUS_PORT},
-            collection_name="rag_documents"
-        )
-        logger.info("Connected to Milvus")
+        # Try FAISS first for Render deployment
+        from langchain_community.vectorstores import FAISS
+        
+        # Load training data and create FAISS with it
+        training_chunks = load_training_data()
+        vector_store = FAISS.from_texts(training_chunks, embeddings)
+        
+        logger.info(f"Using FAISS with {len(training_chunks)} pre-loaded chunks")
         return True
-    except Exception as milvus_error:
-        logger.error(f"Failed to connect to Milvus: {milvus_error}")
-        try:
-            from langchain_community.vectorstores import FAISS
-            
-            # Load training data and create FAISS with it
-            training_chunks = load_training_data()
-            vector_store = FAISS.from_texts(training_chunks, embeddings)
-            
-            logger.info(f"Using FAISS with {len(training_chunks)} pre-loaded chunks")
-            return True
-        except Exception as e:
-            logger.error(f"FAISS fallback also failed: {e}")
-            return False
+    except Exception as e:
+        logger.error(f"FAISS initialization failed: {e}")
+        return False
 
 def extract_text_from_file(file: UploadFile) -> str:
     file_extension = file.filename.split('.')[-1].lower()
@@ -340,8 +329,8 @@ def chunk_text(text: str) -> List[Document]:
 
 @app.on_event("startup")
 async def startup_event():
-    if not initialize_milvus():
-        logger.warning("Could not connect to Milvus. Make sure Docker Compose is running.")
+    if not initialize_vector_store():
+        logger.error("Could not initialize vector store.")
     
     # Log initial status
     logger.info(f"Starting with model: {get_current_model()}")
@@ -353,11 +342,11 @@ async def root():
 
 @app.get("/health")
 async def health_check():
-    milvus_status = "connected" if vector_store else "disconnected"
+    vector_store_status = "connected" if vector_store else "disconnected"
     
     return {
         "status": "healthy",
-        "milvus": milvus_status,
+        "vector_store": vector_store_status,
         "api_keys_configured": {
             "primary": bool(GEMINI_API_KEY_PRIMARY and GEMINI_API_KEY_PRIMARY != "your_primary_key_here"),
             "fallback": bool(GEMINI_API_KEY_FALLBACK and GEMINI_API_KEY_FALLBACK != "your_fallback_key_here")
@@ -394,7 +383,7 @@ async def model_status():
 @app.post("/upload")
 async def upload_document(file: UploadFile = File(...)):
     if not vector_store:
-        raise HTTPException(status_code=503, detail="Vector store not initialized. Check Milvus connection.")
+        raise HTTPException(status_code=503, detail="Vector store not initialized.")
     
     try:
         text = extract_text_from_file(file)
@@ -418,7 +407,7 @@ async def upload_document(file: UploadFile = File(...)):
 @app.post("/question", response_model=QuestionResponse)
 async def ask_question(request: QuestionRequest):
     if not vector_store:
-        raise HTTPException(status_code=503, detail="Vector store not initialized. Check Milvus connection.")
+        raise HTTPException(status_code=503, detail="Vector store not initialized.")
     
     try:
         answer, model_used, language = process_question_with_fallback(

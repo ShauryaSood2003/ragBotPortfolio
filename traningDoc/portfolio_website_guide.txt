@@ -1,0 +1,181 @@
+SHAURYA SOOD'S PORTFOLIO WEBSITE - COMPLETE USER GUIDE AND NAVIGATION HELP
+
+ABOUT SHAURYA'S PORTFOLIO WEBSITE
+Shaurya Sood has created an innovative 3D interactive portfolio website that showcases his skills as a Senior Full Stack Developer. The website is built using React.js with Three.js for stunning 3D graphics and animations. This is not just a regular portfolio - it's an immersive experience that demonstrates Shaurya's technical creativity and expertise.
+
+WEBSITE FEATURES OVERVIEW
+- Interactive 3D Island scene with animated models
+- Multi-language support (English and Hindi)
+- Dark and Light theme modes
+- AI chatbot assistant (that's me!) to help visitors
+- Fully responsive design for desktop and mobile
+- Flying animations with birds and planes
+- Animated 3D dragon on contact page
+- Real-time form interactions
+- Professional timeline and project showcases
+
+HOW TO NAVIGATE SHAURYA'S WEBSITE
+
+MAIN PAGES AND WHAT YOU'LL FIND:
+
+HOME PAGE (Main Landing Page):
+When you first visit Shaurya's website, you'll see an amazing 3D island that rotates and changes. This island has different stages:
+- Stage 1: Welcome message with Shaurya's name and title as Senior Full Stack Developer
+- Stage 2: Prompts you to learn more about Shaurya in the About section
+- Stage 3: Invites you to explore his projects
+- Stage 4: Encourages you to get in touch via Contact section
+You'll also see flying birds and planes with a dynamic sky that changes based on the theme you select.
+
+ABOUT PAGE (/about):
+This page contains everything about Shaurya's professional journey:
+- His complete career timeline at BurdenOff company:
+  * Started as Full Stack Intern (July 2024 - October 2024)
+  * Promoted to Junior Full Stack Developer (November 2024 - April 2025)
+  * Currently Senior Full Stack Developer (May 2025 - Present)
+- Amazing achievements: 25,000+ transactions processed, 60,000+ active users served
+- His educational background: B.Tech from ADGITM with 9.23 CGPA
+- Technical skills organized by categories:
+  * Frontend: React, JavaScript, TypeScript, HTML5, CSS3, Tailwind
+  * Backend: Node.js, Express, MongoDB, AWS, Docker, Git
+  * AI Tools: Claude, ChatGPT, Gemini, Cursor for AI-powered development
+- Interactive skill cards that animate when you hover over them
+
+PROJECTS PAGE (/project):
+Here you can explore 6 featured projects that Shaurya has built:
+
+1. 91Springboard: A cross-platform booking application for coworking spaces
+   - Handles 1000+ bookings per day
+   - Serves 60,000+ users and 29,000+ organizations
+   - Built for iOS, Android, and web platforms
+
+2. CodeCrack: A real-time code execution platform
+   - Features 1v1 coding battles
+   - Microserviced architecture
+   - Real-time feedback system
+
+3. PayWay: Complete payment and fintech solution
+   - Bank transfer capabilities
+   - P2P transactions
+   - Merchant dashboard with real-time updates
+
+4. ChatIo: Real-time messaging application (like WhatsApp)
+   - Media sharing capabilities
+   - Secure Google authentication
+   - Persistent chat history
+
+5. Nutrition App: Health tracking application
+   - Tracks nutritional information
+   - Health monitoring features
+
+6. Portfolio Showcase: Previous versions of his portfolio
+
+Each project shows the technology stack used, key features, and includes links to live demos and GitHub repositories.
+
+CONTACT PAGE (/contact):
+This page features an interactive contact form with a special 3D animated dragon:
+- The dragon responds to your interactions with the form
+- Form powered by EmailJS for direct communication
+- Dragon animations change based on form state (idle, walking, reacting)
+- You can send messages directly to: shauryasood293@gmail.com
+- Form fields: Your Name, Email, and Message
+
+WEBSITE NAVIGATION FEATURES
+
+FOR DESKTOP USERS:
+- Top navigation bar with "SS" logo (click to return home)
+- Navigation menu: Home, About, Projects, Contact
+- Theme toggle button (sun/moon icon) to switch between light and dark modes
+- Language toggle to switch between English and Hindi
+- Resume download button (links to Google Drive PDF)
+- All 3D models are interactive - you can click and drag to explore
+
+FOR MOBILE USERS:
+- Bottom navigation bar with easy-to-tap icons
+- All features available in mobile-optimized format
+- 3D models scaled appropriately for mobile screens
+- Swipe and tap interactions for 3D elements
+- Theme and language toggles accessible in top-right corner
+
+THEME SYSTEM EXPLANATION:
+- Light Mode: Beautiful day sky, bright colors, white backgrounds, sunny atmosphere
+- Dark Mode: Stunning night sky with stars, dark backgrounds, moonlit atmosphere
+- The 3D sky actually changes from day to night when you switch themes!
+- Your theme choice is remembered for future visits
+
+LANGUAGE SUPPORT:
+- Complete English and Hindi translation
+- All content including technical skills and projects is translated
+- Professional experience descriptions available in both languages
+- Language choice affects the entire website interface
+
+AI CHATBOT ASSISTANT (That's Me!):
+- I'm the glowing robot icon you see in the bottom-right corner
+- I can answer questions about Shaurya's background, skills, projects, and experience
+- I support both voice recognition and text-to-speech
+- I can help you navigate the website and understand Shaurya's work
+- I'm powered by a custom RAG (Retrieval Augmented Generation) system
+- I work in both English and Hindi
+- Click on me to start a conversation!
+
+SHAURYA'S CONTACT INFORMATION:
+- Primary Email: shauryasood293@gmail.com
+- LinkedIn: https://www.linkedin.com/in/shaurya-sood-87b968208/
+- GitHub: https://github.com/ShauryaSood2003
+- Resume Download: Available via the Resume button on any page
+- Location: India
+
+TECHNICAL IMPLEMENTATION HIGHLIGHTS:
+- Built with React.js for robust web application structure
+- Three.js integration for stunning 3D graphics and animations
+- EmailJS for contact form functionality
+- Responsive design ensuring great experience on all devices
+- Advanced animation system with smooth transitions
+- Performance optimized for both desktop and mobile devices
+
+WHAT MAKES THIS WEBSITE SPECIAL:
+This isn't just a regular portfolio website. Shaurya has created an immersive 3D experience that demonstrates his technical skills while providing an engaging user experience. The combination of professional content presentation with creative 3D design shows his ability to balance technical functionality with aesthetic appeal.
+
+COMMON QUESTIONS VISITORS ASK:
+
+"How do I contact Shaurya?"
+Visit the Contact page (/contact) to use the interactive form, or email him directly at shauryasood293@gmail.com
+
+"Where can I see his projects?"
+Go to the Projects page (/project) to explore all 6 featured projects with live demos and code repositories
+
+"What technologies does Shaurya know?"
+The About page (/about) has a comprehensive breakdown of his technical skills organized by category
+
+"Is this website mobile-friendly?"
+Yes! The website is fully responsive with mobile-optimized navigation and 3D elements scaled for mobile screens
+
+"How do I download his resume?"
+Click the "Resume" button available in the navigation on any page - it will open his CV in Google Drive
+
+"What's the AI chatbot for?"
+That's me! I can answer questions about Shaurya's background, help you navigate the website, and provide information about his projects and skills
+
+"Why is the website loading slowly?"
+The 3D models may take a moment to load on slower internet connections, but they're optimized for performance
+
+"How do I use the voice features?"
+Click on the AI chatbot (me!) and use the voice input button. Your browser will ask for microphone permissions
+
+WEBSITE PERFORMANCE NOTES:
+- 3D models are optimized but may load slowly on slower connections
+- Mobile devices get specially scaled 3D models for better performance
+- The AI chatbot requires an internet connection to function
+- Voice features need browser microphone permissions
+- All animations are smooth and performant across different devices
+
+This portfolio website serves as a comprehensive showcase of Shaurya Sood's capabilities as a Senior Full Stack Developer, demonstrating both his technical expertise and creative vision through an innovative 3D interactive experience.
+
+QUICK NAVIGATION TIPS:
+1. Start at the Home page to get oriented with the 3D island experience
+2. Visit About to learn about Shaurya's professional background
+3. Explore Projects to see his technical work and live demos
+4. Use Contact to reach out directly
+5. Try switching themes and languages to see the full experience
+6. Interact with me (the AI assistant) for personalized help and information
+
+The website represents Shaurya's journey from intern to senior developer and showcases the projects that have made him successful in building large-scale applications serving thousands of users.
