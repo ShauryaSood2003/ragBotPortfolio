@@ -45,10 +45,15 @@ class QuestionResponse(BaseModel):
     model_used: Optional[str] = None
     language: Optional[str] = None
 
-# Gemini model configurations ordered by preference (best first)
+# Current (Non-Deprecated) Gemini models ordered by preference (best first)
 GEMINI_MODELS = [
-    "gemini-1.5-flash",       # 50 RPD - Primary model
-    "gemini-1.5-pro",         # Pro model - fallback option
+    "gemini-2.5-flash-lite-preview-06-17",  # Default - Best for high volume
+    "gemini-2.5-flash",                     # High performance model
+    "gemini-2.0-flash",                     # Fast processing
+    "gemini-2.0-flash-lite",                # Lightweight option
+    "gemini-2.5-pro",                       # Most capable model
+    "gemini-1.5-flash",                     # Deprecated but still accessible
+    "gemini-1.5-pro",                       # Deprecated fallback
 ]
 
 # Global variables

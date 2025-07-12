@@ -286,13 +286,24 @@ curl -X POST "http://localhost:8000/question" \
      -d '{"question": "शौर्य की विशेषज्ञता क्या है?", "language": "hindi"}'
 ```
 
-## 🔄 **Smart Model Fallback System**
+## 🔄 **Advanced Multi-Model + Multi-API Key System**
 
-Your RAG bot features an intelligent model switching system:
-- **1,800+ daily requests** across multiple Gemini models
-- **Automatic failover** when rate limits are hit
-- **Zero downtime** - seamless model switching
+Your RAG bot features an enterprise-grade fallback system:
+- **14 different configurations** (7 models × 2 API keys)
+- **700+ daily requests** across latest Gemini models
+- **Default model**: `gemini-2.5-flash-lite-preview-06-17` (latest non-deprecated)
+- **Automatic failover** across models and API keys
+- **Zero downtime** - seamless switching
 - **Enterprise-grade reliability** for your portfolio
+
+**Available Models (in priority order):**
+1. `gemini-2.5-flash-lite-preview-06-17` (Default - High volume)
+2. `gemini-2.5-flash` (High performance)
+3. `gemini-2.0-flash` (Fast processing)
+4. `gemini-2.0-flash-lite` (Lightweight)
+5. `gemini-2.5-pro` (Most capable)
+6. `gemini-1.5-flash` (Deprecated fallback)
+7. `gemini-1.5-pro` (Final fallback)
 
 ## 📊 **Monitor Your Bot:**
 - `/health` - Check current status and model usage
