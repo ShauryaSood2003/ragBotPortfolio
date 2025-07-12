@@ -247,24 +247,24 @@ conversation_chains = {}
 def initialize_milvus():
     global vector_store
     try:
-        from langchain_community.vectorstores import FAISS
-        vector_store = FAISS.from_texts(
-            ["Initial empty document"], 
-            embeddings
+        vector_store = Milvus(
+            embedding_function=embeddings,
+            connection_args={"host": MILVUS_HOST, "port": MILVUS_PORT},
+            collection_name="rag_documents"
         )
-        logger.info("Using FAISS as fallback vector store")
+        logger.info("Connected to Milvus")
         return True
-    except Exception as e:
+    except Exception as milvus_error:
+        logger.error(f"Failed to connect to Milvus: {milvus_error}")
         try:
-            vector_store = Milvus(
-                embedding_function=embeddings,
-                connection_args={"host": MILVUS_HOST, "port": MILVUS_PORT},
-                collection_name="rag_documents"
+            from langchain_community.vectorstores import FAISS
+            vector_store = FAISS.from_texts(
+                ["Initial empty document"], 
+                embeddings
             )
-            logger.info("Connected to Milvus")
+            logger.info("Using FAISS as fallback vector store")
             return True
-        except Exception as milvus_error:
-            logger.error(f"Failed to connect to Milvus: {milvus_error}")
+        except Exception as e:
             logger.error(f"FAISS fallback also failed: {e}")
             return False
 
