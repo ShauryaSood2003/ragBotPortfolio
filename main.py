@@ -14,7 +14,8 @@ from langchain.memory import ConversationBufferMemory
 from langchain.schema import Document
 import PyPDF2
 import docx2txt
-import pandas as pd
+import csv
+import io
 from dotenv import load_dotenv
 import logging
 
@@ -313,8 +314,14 @@ def extract_text_from_file(file: UploadFile) -> str:
         return file.file.read().decode('utf-8')
     
     elif file_extension in ['csv']:
-        df = pd.read_csv(io.BytesIO(file.file.read()))
-        return df.to_string()
+        content = file.file.read().decode('utf-8')
+        csv_reader = csv.reader(io.StringIO(content))
+        rows = list(csv_reader)
+        # Convert CSV to readable text format
+        text = ""
+        for row in rows:
+            text += ", ".join(row) + "\n"
+        return text
     
     else:
         raise HTTPException(status_code=400, detail=f"Unsupported file type: {file_extension}")

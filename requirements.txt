@@ -9,7 +9,6 @@ pydantic==2.5.0
 python-dotenv==1.0.0
 pypdf2==3.0.1
 docx2txt==0.8
-pandas==2.1.4
 numpy==1.24.3
 tiktoken==0.5.2
 faiss-cpu==1.7.4
