@@ -3,8 +3,9 @@ import io
 import time
 import random
 from typing import List, Optional, Dict, Any
-from fastapi import FastAPI, UploadFile, File, HTTPException, Form
+from fastapi import FastAPI, UploadFile, File, HTTPException, Form, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain_google_genai import GoogleGenerativeAIEmbeddings, ChatGoogleGenerativeAI
@@ -27,17 +28,57 @@ logger = logging.getLogger(__name__)
 
 app = FastAPI(title="RAG Bot API", description="A RAG bot with Gemini AI and Smart Model Fallback")
 
+# Allowed origins for API access
+ALLOWED_ORIGINS = [
+    "https://shauryasportfolio.netlify.app",
+    "http://localhost:3000",  # For local development
+    "http://127.0.0.1:3000",  # For local development
+    "http://localhost:8000",  # For local API testing
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "https://shauryasportfolio.netlify.app",
-        "http://localhost:3000",  # For local development
-        "http://127.0.0.1:3000"   # For local development
-    ],
+    allow_origins=ALLOWED_ORIGINS,
     allow_credentials=True,
     allow_methods=["GET", "POST", "DELETE"],
     allow_headers=["*"],
 )
+
+@app.middleware("http")
+async def origin_check_middleware(request: Request, call_next):
+    """Check request origin for API endpoints"""
+    
+    # Allow health check and root endpoint from anywhere
+    if request.url.path in ["/", "/health", "/docs", "/openapi.json"]:
+        response = await call_next(request)
+        return response
+    
+    # Get the origin header
+    origin = request.headers.get("origin")
+    referer = request.headers.get("referer")
+    host = request.headers.get("host")
+    
+    # Allow if request has valid origin or referer
+    if origin and origin in ALLOWED_ORIGINS:
+        response = await call_next(request)
+        return response
+    
+    if referer:
+        for allowed_origin in ALLOWED_ORIGINS:
+            if referer.startswith(allowed_origin):
+                response = await call_next(request)
+                return response
+    
+    # Allow localhost requests (for development)
+    if host and ("localhost" in host or "127.0.0.1" in host):
+        response = await call_next(request)
+        return response
+    
+    # Block unauthorized requests
+    return JSONResponse(
+        status_code=403,
+        content={"detail": "Access forbidden. This API is restricted to authorized domains only."}
+    )
 
 class QuestionRequest(BaseModel):
     question: str
