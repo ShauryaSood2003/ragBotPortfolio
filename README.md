@@ -1,8 +1,23 @@
 # RAG Bot with Gemini AI - Complete Setup Guide
 
+> **⚠️ DEPLOYMENT NOTICE:** Due to limited resources on the free deployed server (Render), this production deployment uses **FAISS** for vector storage instead of Milvus. For local development with full features including Milvus database, please follow the Docker setup instructions below. The deployed version at `https://rag-bot-api.onrender.com` is optimized for Render's free tier constraints.
+
 A Retrieval-Augmented Generation (RAG) bot that lets you upload documents and have intelligent conversations about their content using Google's Gemini AI.
 
-## 🚀 Quick Start Guide
+## 🌐 Live Production Deployment
+
+**Production URL:** `https://rag-bot-api.onrender.com`
+
+**⚠️ Access Restriction:** This API is restricted to requests from `https://shauryasportfolio.netlify.app` only for security purposes.
+
+**Features in Production:**
+- ✅ FAISS vector storage (optimized for free tier)
+- ✅ Dual Gemini API key system (700+ daily requests)
+- ✅ Pre-loaded comprehensive training data about Shaurya
+- ✅ Multi-language support (English & Hindi)
+- ✅ Smart model fallback across 7 Gemini models
+
+## 🚀 Quick Start Guide (Local Development)
 
 ### Prerequisites
 - Python 3.8+ installed on your system

@@ -29,9 +29,13 @@ app = FastAPI(title="RAG Bot API", description="A RAG bot with Gemini AI and Sma
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=[
+        "https://shauryasportfolio.netlify.app",
+        "http://localhost:3000",  # For local development
+        "http://127.0.0.1:3000"   # For local development
+    ],
     allow_credentials=True,
-    allow_methods=["*"],
+    allow_methods=["GET", "POST", "DELETE"],
     allow_headers=["*"],
 )
 
