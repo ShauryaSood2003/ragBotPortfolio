@@ -107,25 +107,32 @@ curl -X POST "http://localhost:8000/upload" -F "file=@your_document.docx"
 
 ### Step 3: Start Asking Questions (Retrieval Phase)
 
-**Ask your first question:**
+**Ask your first question (English):**
 ```bash
 curl -X POST "http://localhost:8000/question" \
      -H "Content-Type: application/json" \
-     -d '{"question": "What is this document about?"}'
+     -d '{"question": "What is this document about?", "language": "english"}'
+```
+
+**Ask questions in Hindi:**
+```bash
+curl -X POST "http://localhost:8000/question" \
+     -H "Content-Type: application/json" \
+     -d '{"question": "शौर्य का काम क्या है?", "language": "hindi"}'
 ```
 
 **Ask follow-up questions in the same conversation:**
 ```bash
 curl -X POST "http://localhost:8000/question" \
      -H "Content-Type: application/json" \
-     -d '{"question": "Can you give me more details about the main topics?", "session_id": "my_session"}'
+     -d '{"question": "Can you give me more details about the main topics?", "session_id": "my_session", "language": "english"}'
 ```
 
-**Continue the conversation:**
+**Continue the conversation in Hindi:**
 ```bash
 curl -X POST "http://localhost:8000/question" \
      -H "Content-Type: application/json" \
-     -d '{"question": "What are the key takeaways?", "session_id": "my_session"}'
+     -d '{"question": "और कौन से प्रोजेक्ट्स पर काम किया है?", "session_id": "my_session", "language": "hindi"}'
 ```
 
 ### Step 4: Manage Your Conversations
@@ -158,22 +165,27 @@ python3 main.py
 curl -X POST "http://localhost:8000/upload" -F "file=@sample_doc.txt"
 ```
 
-### 3. Have Intelligent Conversations
+### 3. Have Intelligent Conversations (English & Hindi Support)
 ```bash
-# Ask about your documents
+# Ask about your documents in English
 curl -X POST "http://localhost:8000/question" \
      -H "Content-Type: application/json" \
-     -d '{"question": "What industries is AI transforming?", "session_id": "ai_chat"}'
+     -d '{"question": "What is Shaurya background as a developer?", "session_id": "ai_chat", "language": "english"}'
 
-# Follow up question
+# Ask in Hindi
 curl -X POST "http://localhost:8000/question" \
      -H "Content-Type: application/json" \
-     -d '{"question": "Tell me more about machine learning types", "session_id": "ai_chat"}'
+     -d '{"question": "शौर्य के बारे में बताएं", "session_id": "hindi_chat", "language": "hindi"}'
 
-# Continue conversation
+# Follow up question in English
 curl -X POST "http://localhost:8000/question" \
      -H "Content-Type: application/json" \
-     -d '{"question": "Which type would be best for my recommendation system?", "session_id": "ai_chat"}'
+     -d '{"question": "What projects has he worked on?", "session_id": "ai_chat", "language": "english"}'
+
+# Continue conversation in Hindi
+curl -X POST "http://localhost:8000/question" \
+     -H "Content-Type: application/json" \
+     -d '{"question": "उनके टेक्निकल स्किल्स क्या हैं?", "session_id": "hindi_chat", "language": "hindi"}'
 ```
 
 ---
@@ -253,4 +265,58 @@ sudo kill -9 $(lsof -t -i:8000)
 6. **Generation**: Gemini AI generates answer using retrieved context
 7. **Memory**: Conversation history maintained per session
 
-Your RAG bot is now ready to help you understand and interact with your documents! 🤖✨
+## 🌐 **Multi-Language Support**
+
+Your RAG bot now supports both **English and Hindi** languages:
+
+### Language Parameter:
+- `"language": "english"` - Responds in English
+- `"language": "hindi"` - हिंदी में जवाब देता है
+
+### Example Usage:
+```bash
+# English question
+curl -X POST "http://localhost:8000/question" \
+     -H "Content-Type: application/json" \
+     -d '{"question": "What is Shaurya expertise?", "language": "english"}'
+
+# Hindi question  
+curl -X POST "http://localhost:8000/question" \
+     -H "Content-Type: application/json" \
+     -d '{"question": "शौर्य की विशेषज्ञता क्या है?", "language": "hindi"}'
+```
+
+## 🔄 **Smart Model Fallback System**
+
+Your RAG bot features an intelligent model switching system:
+- **1,800+ daily requests** across multiple Gemini models
+- **Automatic failover** when rate limits are hit
+- **Zero downtime** - seamless model switching
+- **Enterprise-grade reliability** for your portfolio
+
+## 📊 **Monitor Your Bot:**
+- `/health` - Check current status and model usage
+- `/model-status` - Detailed breakdown of all models
+
+**Check model status:**
+```bash
+curl http://localhost:8000/model-status
+```
+
+**Example response:**
+```json
+{
+  "current_model": "gemini-1.5-pro",
+  "failed_models": ["gemini-1.5-flash"],
+  "working_models": ["gemini-1.5-pro"],
+  "total_requests_today": 52
+}
+```
+
+## ⚠️ **Rate Limit Notes:**
+- **Free tier limits**: 50 requests/day per model
+- **Auto-switching**: When one model hits limit, automatically switches to backup
+- **Daily reset**: Limits reset at midnight UTC
+- **Model fallback**: System tries multiple models before failing
+
+Your RAG bot is now ready to help you understand and interact with your documents in both English and Hindi! 🤖✨

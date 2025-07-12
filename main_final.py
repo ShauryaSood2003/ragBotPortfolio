@@ -37,45 +37,31 @@ app.add_middleware(
 class QuestionRequest(BaseModel):
     question: str
     session_id: Optional[str] = "default"
-    language: Optional[str] = "english"  # "english" or "hindi"
 
 class QuestionResponse(BaseModel):
     answer: str
     session_id: str
     model_used: Optional[str] = None
-    language: Optional[str] = None
 
 # Gemini model configurations ordered by preference (best first)
 GEMINI_MODELS = [
-    "gemini-1.5-flash",       # 50 RPD - Primary model
-    "gemini-1.5-pro",         # Pro model - fallback option
+    "gemini-2.5-flash-lite",  # 1000 RPD - Best option
+    "gemini-2.5-flash",       # 250 RPD
+    "gemini-2.0-flash",       # 200 RPD  
+    "gemini-2.0-flash-lite",  # 200 RPD
+    "gemini-2.5-pro",        # 100 RPD
+    "gemini-1.5-flash"       # 50 RPD - Last resort
 ]
 
 # Global variables
-GEMINI_API_KEY_PRIMARY = os.getenv("GEMINI_API_KEY_PRIMARY", "your_primary_key_here")
-GEMINI_API_KEY_FALLBACK = os.getenv("GEMINI_API_KEY_FALLBACK", "your_fallback_key_here")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "your_gemini_api_key_here")
 MILVUS_HOST = os.getenv("MILVUS_HOST", "localhost")
 MILVUS_PORT = int(os.getenv("MILVUS_PORT", "19530"))
 
-# API Key and model tracking
-current_api_key_index = 0  # 0 = primary, 1 = fallback
+# Current model tracking
 current_model_index = 0
 model_request_count = 0
 failed_models = set()  # Track models that have failed today
-failed_api_keys = set()  # Track API keys that have failed
-
-# API Keys list for fallback
-API_KEYS = [GEMINI_API_KEY_PRIMARY, GEMINI_API_KEY_FALLBACK]
-
-def get_current_api_key():
-    """Get the currently selected API key"""
-    global current_api_key_index
-    if current_api_key_index < len(API_KEYS):
-        return API_KEYS[current_api_key_index]
-    else:
-        # Reset to first API key if exhausted
-        current_api_key_index = 0
-        return API_KEYS[0]
 
 def get_current_model():
     """Get the currently selected model"""
@@ -87,24 +73,6 @@ def get_current_model():
         current_model_index = 0
         failed_models.clear()
         return GEMINI_MODELS[0]
-
-def switch_to_next_api_key():
-    """Switch to the next available API key"""
-    global current_api_key_index
-    
-    # Mark current API key as failed
-    if current_api_key_index < len(API_KEYS):
-        failed_api_keys.add(current_api_key_index)
-    
-    # Try next API key
-    if current_api_key_index + 1 < len(API_KEYS):
-        current_api_key_index += 1
-        logger.info(f"Switched to fallback API key (index: {current_api_key_index})")
-        return get_current_api_key()
-    
-    # All API keys exhausted
-    logger.warning("All API keys exhausted")
-    return None
 
 def switch_to_next_model():
     """Switch to the next available model"""
@@ -121,39 +89,30 @@ def switch_to_next_model():
             logger.info(f"Switched to model: {GEMINI_MODELS[i]}")
             return GEMINI_MODELS[i]
     
-    # If no models available, try switching API key
-    logger.info("All models exhausted for current API key, trying next API key")
-    next_api_key = switch_to_next_api_key()
-    if next_api_key:
-        # Reset model tracking for new API key
-        current_model_index = 0
-        failed_models.clear()
-        return GEMINI_MODELS[0]
-    
-    # Everything exhausted
-    logger.warning("All models and API keys exhausted")
-    return None
+    # If no models available, reset and try first model
+    logger.warning("All models exhausted, resetting to first model")
+    current_model_index = 0
+    failed_models.clear()
+    return GEMINI_MODELS[0]
 
 def create_llm(model_name: str = None):
-    """Create LLM instance with specified model and current API key"""
+    """Create LLM instance with specified model"""
     if model_name is None:
         model_name = get_current_model()
-    
-    current_api_key = get_current_api_key()
     
     try:
         llm = ChatGoogleGenerativeAI(
             model=model_name,
             temperature=0.3,
-            google_api_key=current_api_key
+            google_api_key=GEMINI_API_KEY
         )
-        logger.info(f"Created LLM with model: {model_name}, API key index: {current_api_key_index}")
+        logger.info(f"Created LLM with model: {model_name}")
         return llm, model_name
     except Exception as e:
-        logger.error(f"Error creating LLM with model {model_name}, API key index {current_api_key_index}: {e}")
+        logger.error(f"Error creating LLM with model {model_name}: {e}")
         raise
 
-def process_question_with_fallback(question: str, session_id: str, language: str = "english", max_retries: int = 3):
+def process_question_with_fallback(question: str, session_id: str, max_retries: int = 3):
     """Process question with automatic model fallback on rate limits"""
     global model_request_count
     
@@ -179,23 +138,14 @@ def process_question_with_fallback(question: str, session_id: str, language: str
                     return_source_documents=True
                 )
             
-            # Add language instruction to the question
-            language_instruction = ""
-            if language.lower() == "hindi":
-                language_instruction = "कृपया हिंदी में उत्तर दें। Please respond in Hindi language: "
-            else:
-                language_instruction = "Please respond in English: "
-            
-            enhanced_question = language_instruction + question
-            
             # Process the question
-            response = conversation_chains[session_id]({"question": enhanced_question})
+            response = conversation_chains[session_id]({"question": question})
             
             # Track successful usage
             model_request_count += 1
             logger.info(f"Successfully processed question with {model_name} (total requests: {model_request_count})")
             
-            return response["answer"], model_name, language
+            return response["answer"], model_name
             
         except Exception as e:
             error_message = str(e)
@@ -230,10 +180,10 @@ def process_question_with_fallback(question: str, session_id: str, language: str
         detail=f"Service temporarily unavailable. Error: {error_message}"
     )
 
-# Initialize embeddings with primary API key
+# Initialize embeddings
 embeddings = GoogleGenerativeAIEmbeddings(
     model="models/embedding-001",
-    google_api_key=GEMINI_API_KEY_PRIMARY
+    google_api_key=GEMINI_API_KEY
 )
 
 vector_store = None
@@ -318,37 +268,25 @@ async def health_check():
     return {
         "status": "healthy",
         "milvus": milvus_status,
-        "api_keys_configured": {
-            "primary": bool(GEMINI_API_KEY_PRIMARY and GEMINI_API_KEY_PRIMARY != "your_primary_key_here"),
-            "fallback": bool(GEMINI_API_KEY_FALLBACK and GEMINI_API_KEY_FALLBACK != "your_fallback_key_here")
-        },
-        "current_api_key_index": current_api_key_index,
+        "gemini_api_configured": bool(GEMINI_API_KEY and GEMINI_API_KEY != "your_gemini_api_key_here"),
         "current_model": get_current_model(),
         "total_requests": model_request_count,
         "failed_models": list(failed_models),
-        "failed_api_keys": list(failed_api_keys),
         "available_models": [m for m in GEMINI_MODELS if m not in failed_models]
     }
 
 @app.get("/model-status")
 async def model_status():
-    """Get detailed model and API key status"""
+    """Get detailed model status"""
     current = get_current_model()
     
     return {
         "current_model": current,
         "current_model_index": current_model_index,
-        "current_api_key_index": current_api_key_index,
         "total_requests_today": model_request_count,
         "available_models": GEMINI_MODELS,
         "failed_models": list(failed_models),
-        "failed_api_keys": list(failed_api_keys),
-        "working_models": [m for m in GEMINI_MODELS if m not in failed_models],
-        "api_keys_status": {
-            "primary_configured": bool(GEMINI_API_KEY_PRIMARY and GEMINI_API_KEY_PRIMARY != "your_primary_key_here"),
-            "fallback_configured": bool(GEMINI_API_KEY_FALLBACK and GEMINI_API_KEY_FALLBACK != "your_fallback_key_here"),
-            "total_capacity": f"{len(GEMINI_MODELS)} models × {len(API_KEYS)} API keys = {len(GEMINI_MODELS) * len(API_KEYS)} total configurations"
-        }
+        "working_models": [m for m in GEMINI_MODELS if m not in failed_models]
     }
 
 @app.post("/upload")
@@ -381,17 +319,12 @@ async def ask_question(request: QuestionRequest):
         raise HTTPException(status_code=503, detail="Vector store not initialized. Check Milvus connection.")
     
     try:
-        answer, model_used, language = process_question_with_fallback(
-            request.question, 
-            request.session_id, 
-            request.language
-        )
+        answer, model_used = process_question_with_fallback(request.question, request.session_id)
         
         return QuestionResponse(
             answer=answer,
             session_id=request.session_id,
-            model_used=model_used,
-            language=language
+            model_used=model_used
         )
     
     except HTTPException:
