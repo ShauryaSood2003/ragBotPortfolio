@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: rag-bot-api
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: GEMINI_API_KEY_PRIMARY
+        sync: false
+      - key: GEMINI_API_KEY_FALLBACK
+        sync: false
+      - key: MILVUS_HOST
+        value: localhost
+      - key: MILVUS_PORT
+        value: 19530
